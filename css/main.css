@@ -1,32 +1,42 @@
-*{
+* {
     font-family: 'Architects Daughter', cursive;
     text-align: center;
     box-sizing: border-box;
 }
 
-body{
-    margin: 0;    
+body {
+    margin: 0;
 }
-.header{
+
+.header {
     background-color: lightslategray;
     color: linen;
     width: 100vw;
-    height: 70px;
+    height: 100px;
+    padding-top: 15px;
     margin-bottom: 10px;
-       
+    /* display: flex; */
 }
-table{
+h1{
+    margin: 0;
+}
+
+.set-lang{
+    margin-bottom: 5px;
+}
+
+table {
     margin: 2em auto;
     border-collapse: collapse;
     padding: 2px;
     margin: 0 auto;
     margin-top: 10px;
-    border-style: hidden; 
-    box-shadow: 0 0 0 1px #ddd; 
+    border-style: hidden;
+    box-shadow: 0 0 0 1px #ddd;
     border-radius: 4px;
 }
 
-input ,button{
+input, button {
     border-radius: 5px;
     margin-top: 5px;
 }
@@ -36,34 +46,39 @@ input ,button{
     padding: 0.5em 0.5em;
 }
 
-.modal-container{
+.modal-container {
     background-color: lightcyan;
     width: 100vw;
-    height: 100%;   
+    height: 100%;
 }
 
-tbody tr:nth-child(odd){
+tbody{
+    background-color: white;
+}
+
+body.rtl {
+    direction: rtl;
+}
+th{
+    padding:0 3px 0;
+}
+
+tbody tr:nth-child(odd) {
     background-color: #eee;
 }
 
-
-
-.modal{
+.modal {
     position: fixed;
     background-color: blanchedalmond;
     width: 80vw;
     margin: 0 auto;
 }
 
-.add-book{
+.add-book {}
 
-}
+.delete-all {}
 
-.delete-all{
-
-}
-
-.read-book, .update-book, .delete-book, .modal button{
+.read-book, .update-book, .delete-book, .modal button {
     text-decoration: none;
     padding: 0.2em 0.6em;
     border-radius: 7px;
@@ -73,18 +88,18 @@ tbody tr:nth-child(odd){
     border: none;
 }
 
-.read-book{
+.read-book {
     background-color: blue;
 }
 
-.update-book{
+.update-book {
     background-color: orange;
 }
 
-.delete-book{
+.delete-book {
     background-color: red;
 }
 
-.modal button{
-background-color: black;
+.modal button {
+    background-color: black;
 }

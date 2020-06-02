@@ -1,9 +1,9 @@
 'use strict'
 const KEY = 'books';
 const PAGE_SIZE = 10;
+var gBooksTitles = ['Moby Dick', 'Lolita', 'War And Peace', 'Hamlet', 'Harry Potter', 'The Lord Of The Rings'];
+var gNextId = loadFromStorage('id');
 var gBooks;
-var gNextId = 1;
-
 
 function getBooks() {
     var gPageIdx = 0;
@@ -13,31 +13,29 @@ function getBooks() {
 
 function createBooks() {
     var books = loadFromStorage(KEY);
-    console.log(books);
-
     if (!books || !books.length) {
+        gNextId = 100
         var books = [];
-        for (let i = 0; i < 13; i++) {
-            books.push(_createBook())
+        for (let i = 0; i < gBooksTitles.length; i++) {
+            var book = _createBook(gBooksTitles[i])
+            books.push(book)
         }
     }
     gBooks = books;
-
     saveToStorage(KEY, books);
 }
 
 function _createBook(title, price) {
-    var nouns = ['JavaScrypt', 'HTML', 'CSS', 'Python', 'C++'];
-    if (!title) var title = makeBookTitle(nouns[getRandomIntInclusive(0, nouns.length - 1)]);
     if (!price) var price = getRandomFloat(15, 40, 2);
-    return {
-        id: gNextId++,
+    var book = {
+        id: ++gNextId,
         title: title,
         price: price,
         desc: makeLorem(),
-        rate: 0 //getRandomIntInclusive(0, 10)
+        rate: 0
     }
-
+    saveToStorage('id', gNextId)
+    return book
 }
 
 function getBookById(bookId) {
@@ -67,8 +65,6 @@ function addBook(bookName, price) {
 }
 
 function setRating(elId, rate) {
-    console.log(elId);
-    console.log(rate);
     var book = gBooks.find(book => +elId === book.id);
     book.rate = rate;
     saveToStorage(KEY, gBooks);
@@ -78,8 +74,3 @@ function removeAll() {
     gBooks = [];
     saveToStorage(KEY, gBooks);
 }
-
-// function saveToStorage(KEY,gBooks)() {
-//     saveToStorage(KEY, gBooks)
-// }
-// loadFromStorage(KEY);
